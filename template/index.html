@@ -14,14 +14,16 @@
 
 <body>
     <div class="container">
-
+        {{api}}
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <img src="static/logo.png" class=" img-responsive logo mb-5 mt-5" />
-                <form>
+                <form method="post">
+                    {%csrf_token%}
                     <div class="input-group input-group-lg mb-5">
                         <input type="text" name="query" class="form-control inputstyle"
                             placeholder="search for calories in your food..." required>
+                        <!-- name=query in above input is necessary for the fetch,when the views.py requests, it will look for query over here -->
                         <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
                     </div>
                 </form>
