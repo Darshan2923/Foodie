@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'toastapp'
+    'toastapp',
+    'mathfilters',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
