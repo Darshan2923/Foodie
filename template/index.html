@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
     <link href="{%static 'style.css'%}" rel="stylesheet" type="text/css" />
-    <title>Foodie Calorie Finder</title>
+    <link rel="icon" type="image/png" href="/static/logo.png" />
+    <title>Foodie | Calorie Finder</title>
 </head>
 
 <body>
@@ -121,10 +122,50 @@
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        </div>
                     </div>
                     {%endif%}
                     {%endif%}
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script>
+                    const ctx = document.getElementById('myChart');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Carbohydrates', 'Cholesterol', 'Saturated fat', 'Total Fat', 'Fiber Content', 'Potassium', 'Protein', 'Sodium', 'Sugar'],
+                            datasets: [{
+                                label: 'Amount in {{api.0.name | capfirst}}',
+                                data: [
+                                    '{{api.0.carbohydrates_total_g}}',
+                                    '{{ api.0.cholesterol_mg }}',
+                                    '{{ api.0.fat_saturated_g }}',
+                                    '{{ api.0.fat_total_g }}',
+                                    '{{ api.0.fiber_g }}',
+                                    '{{ api.0.potassium_mg }}',
+                                    '{{ api.0.protein_g }}',
+                                    '{{ api.0.sodium_mg }}',
+                                    '{{ api.0.sugar_g }}'
+
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
             </div>
 </body>
 

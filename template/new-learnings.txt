@@ -1,0 +1,9 @@
+Here i'll document my new learning on chart.js
+
+1--> Google>chart.js
+
+Copy paste the script and cdn and customize
+according to your required chart type
+
+Here i wanted bar charts so i did the work done.
+Thankyou!!!
